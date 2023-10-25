@@ -1,6 +1,6 @@
 const HomePage = () => {
     return (
-        <>hi</>
+        <>Hello world 안녕</>
     )
 }
 
