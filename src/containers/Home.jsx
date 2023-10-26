@@ -1,6 +1,14 @@
+import Layout from "components/Layout"
+
+
 const HomePage = () => {
     return (
-        <>Hello world 안녕</>
+        <Layout>
+            <div className="home">
+                Hello world 안녕
+
+            </div>
+        </Layout>
     )
 }
 

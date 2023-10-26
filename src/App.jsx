@@ -1,17 +1,22 @@
-import Layout from "components/Layout";
 import React, {Component} from "react";
-import HomePage from "containers/Home";
-import resetStyle from "assets/css/reset.css"
-import style from "assets/css/style.css"
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from "containers/Home";
+import Menu1 from "./containers/Menu1";
+import Menu2 from "./containers/Menu2";
+import "assets/css/reset.css"
+import "assets/css/style.css"
 
-class App extends Component {
-    render() {
-        return (
-            <Layout>
-                <HomePage />
-            </Layout>
-        );
-    }
-}
-
-export default App;
+export default function App() {
+  
+    return (
+      <div className="App">
+         <BrowserRouter>
+            <Routes>
+                <Route path={"/"} element={<Home />}></Route>
+                <Route path={"/containers/Menu1"} element={<Menu1 />}></Route>
+                <Route path={"/containers/Menu2"} element={<Menu2 />}></Route>
+            </Routes>
+          </BrowserRouter>
+    </div>
+    );
+  }
