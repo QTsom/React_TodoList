@@ -1,11 +1,28 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import linkBackgroundImg from "../../assets/img/icon/icon_heart.png"
 
 const Header = () => {
+    const [scrolling, setScrolling] = useState(false);
+    const handleScroll = () => {
+        if (window.scrollY > 0) {
+            setScrolling(true);
+        } else {
+            setScrolling(false);
+        }
+    }
+
+    useEffect(()=> {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }, []);
+
     return (
-        <HeaderContainer>
+        <HeaderContainer className={`header ${scrolling ? 'scrolling' : ''}`}>
             <div className="header-inner">
                 <h1 className="logo">
                     <Link to="/" className="logo__link">HOME</Link>
@@ -37,10 +54,17 @@ export default Header;
 
 const HeaderContainer = styled.header`
     position: fixed;
+    top: 0;
     width: 100%;
     padding: 0 20px;
     box-shadow: 1px 0px 8px 4px #fb607a;
     background-color: #f891a2;
+    transition: all 0.3s;
+
+    &.scrolling {
+        top: -80px;
+        box-shadow: none;
+    }
     
     .header-inner {
         display: flex;
