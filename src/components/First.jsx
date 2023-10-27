@@ -1,6 +1,8 @@
 const FirstContainer = () => {
     return (
-        <div>hihi</div>
+        <div>
+            <p>첫 번째 콘텐트.</p>
+        </div>
     )
 }
 

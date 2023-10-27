@@ -56,7 +56,6 @@ const HeaderContainer = styled.header`
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 0 20px;
     box-shadow: 1px 0px 8px 4px #fb607a;
     background-color: #f891a2;
     transition: all 0.3s;
@@ -72,8 +71,9 @@ const HeaderContainer = styled.header`
         justify-content: space-between;
         max-width: 1280px;
         width: 100%;
-        margin: 0 auto;
         height: 80px;
+        padding: 0 20px;
+        margin: 0 auto;
 
         & > * {
             width: 100%;

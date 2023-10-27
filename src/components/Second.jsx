@@ -1,7 +1,7 @@
 const SecondContainer = () => {
     return (
         <div>
-            hello
+            <p>두 번째 콘텐트.</p>
         </div>
     )
 }

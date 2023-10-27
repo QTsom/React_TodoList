@@ -1,6 +1,8 @@
 const ThirdContainer = () => {
     return(
-        <div>bye</div>
+        <div>
+            <p>세 번째 콘텐트.</p>
+        </div>
     )
 
 }
