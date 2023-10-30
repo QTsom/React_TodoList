@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import Layout from "components/common/Layout";
 import FirstContainer from "components/First";
 import SecondContainer from "components/Second";
 import ThirdContainer from "components/Third";
 
-import exImg from '../assets/img/contents/content_ex.jpg';
-import exImg2 from "../assets/img/contents/img_ex.png"
+import exImg from '../assets/img/contents/ex_img.jpg';
+import exImg2 from '../assets/img/contents/ex_img2.jpg';
+import exImg3 from '../assets/img/contents/ex_img3.jpg';
 
 const HomePage = () => {
     const [content, setContent] = useState('FIRST');
@@ -54,7 +56,7 @@ const HomePage = () => {
             id: 3,
             title: '뉴스 제목입니다.',
             description: '내용 긴 거는 두줄 생략 내용 긴 거는 두줄 생략내용 긴 거는 두줄 생략내용 긴 거는 두줄 생략내용 긴 거는 두줄 생략내용 긴 거는 두줄 생략',
-            image: exImg,
+            image: exImg3,
         },
         {
             id: 4,
@@ -98,22 +100,21 @@ const HomePage = () => {
                     <ul className='news-wrap__list'>
                         {dummyList.map((dummy, dummyItem) => (
                             <li className='news-wrap__item' key={dummyItem}>
-                                <div className='news-wrap__img-box'>
-                                    <img src={dummy.image} alt="" />
-                                </div>
+                                <Link to={`/sub/${dummy.id}`}>
+                                    <div className='news-wrap__img-box'>
+                                        <img src={dummy.image} alt="" />
+                                    </div>
 
-                                <div className='news-wrap__description-box'>
-                                    <h3>{dummy.title}</h3>
-                                    <p>{dummy.description}</p>
-                                </div>
+                                    <div className='news-wrap__description-box'>
+                                        <h3>{dummy.title}</h3>
+                                        <p>{dummy.description}</p>
+                                    </div>
+                                </Link>
                             </li>
                         ))}
                     </ul>
                 </section>
 
-                <section>
-                </section>
-                
                 <section>
                 </section>
 
@@ -229,14 +230,13 @@ const HomeContainer = styled.div `
         text-align: center;
 
         &__title {
-            margin-bottom: 10px;
-            font-size: 38px;
-            font-weight: 400;
+            font-size: 42px;
+            font-weight: 700;
             color: #fc3455;
         }
 
         > p {
-            margin-bottom: 45px;
+            margin-bottom: 35px;
             font-size: 22px;
             color: #fc3455;
         }
@@ -247,9 +247,9 @@ const HomeContainer = styled.div `
             gap: 20px 25px;
         }
         &__item {
-            /* height: 100%; */
-            border-radius: 23px;
+            border-radius: 8px;
             overflow: hidden;
+            border: 1px solid #f891a2;
         }
         &__img-box {
             aspect-ratio: 13/7;
@@ -259,6 +259,7 @@ const HomeContainer = styled.div `
             height: 100%;
             padding: 15px 20px;
             background-color: #fff1f4;
+            color: #da2644;
             
             h3 {
                 margin-bottom: 10px;
