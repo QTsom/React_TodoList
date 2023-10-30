@@ -5,6 +5,9 @@ import FirstContainer from "components/First";
 import SecondContainer from "components/Second";
 import ThirdContainer from "components/Third";
 
+import exImg from '../assets/img/contents/content_ex.jpg';
+import exImg2 from "../assets/img/contents/img_ex.png"
+
 const HomePage = () => {
     const [content, setContent] = useState('FIRST');
 
@@ -34,6 +37,39 @@ const HomePage = () => {
         },
     ]
 
+    const dummyList = [
+        {
+            id: 1,
+            title: '뉴스 제목입니다.',
+            description: '뉴스 내용입니다.',
+            image: exImg,
+        },
+        {
+            id: 2,
+            title: '더미 타이틀입니다.',
+            description: '더미 디스크립션입니다.',
+            image: exImg2,
+        },
+        {
+            id: 3,
+            title: '뉴스 제목입니다.',
+            description: '내용 긴 거는 두줄 생략 내용 긴 거는 두줄 생략내용 긴 거는 두줄 생략내용 긴 거는 두줄 생략내용 긴 거는 두줄 생략내용 긴 거는 두줄 생략',
+            image: exImg,
+        },
+        {
+            id: 4,
+            title: '네 번째 뉴스 제목입니다.',
+            description: '네 번째 뉴스 내용입니다.',
+            image: exImg2,
+        },
+        {
+            id: 5,
+            title: '더미 리스트 다섯 번째 타이틀',
+            description: '더미 리스트 다섯 번째 디스크립션',
+            image: exImg,
+        },
+    ]
+
 
     return (
         <Layout>
@@ -52,23 +88,26 @@ const HomePage = () => {
                     {content && <article>{selectComponent[content]}</article>}
                 </section>
 
-                <section className='newsContainer'>
-                    <h2 className='title'>
+                <section className='news-wrap'>
+                    <h2 className='news-wrap__title'>
                         News Area
                     </h2>
+
                     <p>리스트들을 구경해 보세요.</p>
 
-                    <ul>
-                        <li>
-                            <div>
-                                <img src="" alt="" />
-                            </div>
+                    <ul className='news-wrap__list'>
+                        {dummyList.map((dummy, dummyItem) => (
+                            <li className='news-wrap__item' key={dummyItem}>
+                                <div className='news-wrap__img-box'>
+                                    <img src={dummy.image} alt="" />
+                                </div>
 
-                            <div>
-                                <h3></h3>
-                                <p></p>
-                            </div>
-                        </li>
+                                <div className='news-wrap__description-box'>
+                                    <h3>{dummy.title}</h3>
+                                    <p>{dummy.description}</p>
+                                </div>
+                            </li>
+                        ))}
                     </ul>
                 </section>
 
@@ -120,7 +159,7 @@ const HomeContainer = styled.div `
                 }
             }
         }
- }
+    }
     .tab-wrap {
         display: flex;
         flex-direction: column;
@@ -182,6 +221,57 @@ const HomeContainer = styled.div `
             }
             &:hover::after {
                 left: 0;
+            }
+        }
+    }
+
+    .news-wrap {
+        text-align: center;
+
+        &__title {
+            margin-bottom: 10px;
+            font-size: 38px;
+            font-weight: 400;
+            color: #fc3455;
+        }
+
+        > p {
+            margin-bottom: 45px;
+            font-size: 22px;
+            color: #fc3455;
+        }
+
+        &__list {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px 25px;
+        }
+        &__item {
+            /* height: 100%; */
+            border-radius: 23px;
+            overflow: hidden;
+        }
+        &__img-box {
+            aspect-ratio: 13/7;
+            overflow: hidden;
+        }
+        &__description-box {
+            height: 100%;
+            padding: 15px 20px;
+            background-color: #fff1f4;
+            
+            h3 {
+                margin-bottom: 10px;
+                font-size: 24px;
+            }
+            p {
+                display: -webkit-box;
+                font-size: 18px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                word-break: break-word;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
             }
         }
     }
