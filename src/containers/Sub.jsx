@@ -1,7 +1,13 @@
-import { useParams } from "react-router-dom";
+import Layout from "components/common/Layout";
+// import { useParams } from "react-router-dom";
 
 const SubPage = () => {
-
-    return;
+    // const params = useParams();
+    
+    return (
+        <Layout>
+            
+        </Layout>
+    );    
 }
 export default SubPage;

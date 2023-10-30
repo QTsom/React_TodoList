@@ -100,9 +100,10 @@ const HomePage = () => {
                     <ul className='news-wrap__list'>
                         {dummyList.map((dummy, dummyItem) => (
                             <li className='news-wrap__item' key={dummyItem}>
-                                <Link to={`/sub/${dummy.id}`}>
+                                <Link to={`/SubPage/${dummy.id}`}>
+                                {/* <Link to="/Sub"> */}
                                     <div className='news-wrap__img-box'>
-                                        <img src={dummy.image} alt="" />
+                                        <img src={dummy.image} alt="뉴스 이미지" />
                                     </div>
 
                                     <div className='news-wrap__description-box'>
@@ -115,7 +116,10 @@ const HomePage = () => {
                     </ul>
                 </section>
 
-                <section>
+                <section className=''>
+                    <div className='left-box'></div>
+
+                    <div className='right-box'></div>
                 </section>
 
             </HomeContainer>
@@ -232,13 +236,13 @@ const HomeContainer = styled.div `
         &__title {
             font-size: 42px;
             font-weight: 700;
-            color: #fc3455;
+            color: #f891a2;
         }
 
         > p {
             margin-bottom: 35px;
             font-size: 22px;
-            color: #fc3455;
+            color: #f891a2;
         }
 
         &__list {
@@ -250,16 +254,32 @@ const HomeContainer = styled.div `
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid #f891a2;
+            opacity: 0.7;
+            > a {
+                height: 100%;
+            }
+            &:hover {
+                border: 2px solid #f891a2;
+                opacity: 1;
+
+                .news-wrap__img-box img{
+                    transform: scale(1.2);
+                }
+            }
         }
         &__img-box {
             aspect-ratio: 13/7;
             overflow: hidden;
+
+            img {
+                transition: 0.3s;
+            }
         }
         &__description-box {
             height: 100%;
             padding: 15px 20px;
             background-color: #fff1f4;
-            color: #da2644;
+            color: #f891a2;
             
             h3 {
                 margin-bottom: 10px;
