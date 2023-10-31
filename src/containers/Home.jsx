@@ -14,10 +14,45 @@ const HomePage = () => {
 
     const [content, setContent] = useState('FIRST');
 
+    const [todos, setTodos] = useState([]);
+    const [currentText, setCurrentText] = useState("");
+    const [todoId, setTodoId] = useState(0);
+
     const handleClickButton = e => {
         const {name} = e.target;
         setContent(name);
     }
+
+    const handleChange = e => {
+        setCurrentText(e.target.value)
+    }
+    const handleAdd = () => {
+        setTodos((prevTodos) => [
+            ...prevTodos,
+            {
+                content: currentText,
+                id: todoId,
+                didIt: false,
+            },
+        ]);
+    
+        setTodoId(todoId + 1);
+        setCurrentText("");
+    };
+    const handleRemove = removeId => {
+        const result = todos.filter((todo) => {
+            return todo.id !== removeId
+        })
+        setTodos(result);
+    }
+    const toggleDidIt = (toggleId) => {
+        const result = todos.map((todo => {
+            return todo.id === toggleId ? {...todo, didIt: !todo.didIt} : todo
+        }))
+        setTodos(result);
+    }
+
+
 
     const selectComponent = {
         FIRST: <FirstContainer />,
@@ -102,7 +137,7 @@ const HomePage = () => {
                         {dummyList.map((dummy, dummyItem) => (
                             <li className='news-wrap__item' key={dummyItem}>
                                 <Link to={`/SubPage/${dummy.id}`}>
-                                {/* <Link to="/Sub"> */}
+                                {/* <Link to="/SubPage"> */}
                                     <div className='news-wrap__img-box'>
                                         <img src={dummy.image} alt="뉴스 이미지" />
                                     </div>
@@ -122,15 +157,17 @@ const HomePage = () => {
                     <p className='to-do-wrap__description'>to do list를 만들어 봅시다.</p>
 
                     <div className='add-box'>
-                        <input type="text" className='add-box__input' placeholder='할 일을 적으세요.' />
-                        <button type='button' className='add-box__button'>추가</button>
+                        <input type="text" className='add-box__input' onChange={handleChange} value={currentText} placeholder='할 일을 적으세요.' />
+                        <button type='button' className='add-box__button' onClick={handleAdd}>추가</button>
                     </div>
 
                     <ul className='to-do-wrap__list'>
-                        <li className='to-do-wrap__item'>
-                            <span className='doing'></span>
-                            <button type='button' className='delete-button'></button>
-                        </li>
+                        {todos.map((todo) => (
+                            <li className='to-do-wrap__item' key={todo.id}>
+                                <span onClick={() => toggleDidIt(todo.id)} className={`doing ${todo.didIt ? "active" : ""}`}>{todo.content}</span>
+                                <button type='button' onClick={() => handleRemove(todo.id)} className='delete-button'>삭제</button>
+                            </li>
+                        ))}
                     </ul>
                 </section>
     {/* 데이터 관리에 필요한 네 가지 접근 방법
@@ -141,6 +178,7 @@ const HomePage = () => {
     - Update : 수정(변경)하기
 
     - Delete : 삭제하기 */}
+
             </HomeContainer>
         </Layout>
     )
@@ -351,6 +389,46 @@ const HomeContainer = styled.div `
                 color: #fff1f4;
                 background-color: #f891a2;
                 border-radius: 5px;
+                transition: 0.2s;
+
+                &:hover {
+                    transform: rotate(15deg);
+                }
+            }
+        }
+
+        &__list {
+            margin-top: 20px;
+        }
+
+        &__item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 10px;
+            font-size: 24px;
+            font-weight: 700;
+
+            &::before {
+                content: "-";
+            }
+            .doing {
+                cursor: pointer;
+
+                &.active {
+                    font-weight: 400;
+                    color: #888;
+                    text-decoration: line-through;
+                    
+                }
+            }
+
+            .delete-button {
+                padding: 2px 5px;
+                font-size: 14px;
+                color: #f1f1f1;
+                background: #f891a2;
+                border-radius: 3px;
                 transition: 0.2s;
 
                 &:hover {

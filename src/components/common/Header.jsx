@@ -7,7 +7,6 @@ import linkBackgroundImg from "../../assets/img/icon/icon_heart.png"
 const Header = () => {
     const [scrolling, setScrolling] = useState(false);
 
-    // y축이 0일 때만 헤더 나타나게
     // const handleScroll = () => {
     //     if (window.scrollY > 0) {
     //         setScrolling(true);

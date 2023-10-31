@@ -15,7 +15,7 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    <p>footer 영역이에요.</p>
+                    <p>footer 영역입니다.</p>
                 </div>
             </div>
         </FooterContainer>
