@@ -11,6 +11,7 @@ import exImg2 from '../assets/img/contents/ex_img2.jpg';
 import exImg3 from '../assets/img/contents/ex_img3.jpg';
 
 const HomePage = () => {
+
     const [content, setContent] = useState('FIRST');
 
     const handleClickButton = e => {
@@ -116,12 +117,30 @@ const HomePage = () => {
                     </ul>
                 </section>
 
-                <section className=''>
-                    <div className='left-box'></div>
+                <section className='to-do-wrap'>
+                    <h2 className='to-do-wrap__title'>할 일 목록 추가</h2>
+                    <p className='to-do-wrap__description'>to do list를 만들어 봅시다.</p>
 
-                    <div className='right-box'></div>
+                    <div className='add-box'>
+                        <input type="text" className='add-box__input' placeholder='할 일을 적으세요.' />
+                        <button type='button' className='add-box__button'>추가</button>
+                    </div>
+
+                    <ul className='to-do-wrap__list'>
+                        <li className='to-do-wrap__item'>
+                            <span className='doing'></span>
+                            <button type='button' className='delete-button'></button>
+                        </li>
+                    </ul>
                 </section>
+    {/* 데이터 관리에 필요한 네 가지 접근 방법
+    - Create : 생성(추기)하기
 
+    - Read : 조회하기(읽기)
+
+    - Update : 수정(변경)하기
+
+    - Delete : 삭제하기 */}
             </HomeContainer>
         </Layout>
     )
@@ -154,13 +173,13 @@ const HomeContainer = styled.div `
 
             @keyframes typing {
                 from {
-                    width: 0
+                    width: 0;
                 }
             }
                 
             @keyframes blink {
                 50% {
-                    border-color: transparent
+                    border-color: transparent;
                 }
             }
         }
@@ -293,6 +312,50 @@ const HomeContainer = styled.div `
                 word-break: break-word;
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
+            }
+        }
+    }
+
+    .to-do-wrap {
+        color: #f891a2;
+
+        &__title {
+            font-size: 34px;
+        }
+        &__description {
+            margin-bottom: 30px;
+            font-size: 22px;
+        }
+
+        .add-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            &__input {
+                height: 30px;
+                padding: 0 10px;
+                font-size: 16px;
+                background-color: #fff1f4;
+                border: 1px solid #f891a2;
+                border-radius: 5px;
+
+                &::placeholder {
+                    color: #f891a2;
+                }
+            }
+            &__button {
+                width: 55px;
+                height: 28px;
+                font-size: 16px;
+                color: #fff1f4;
+                background-color: #f891a2;
+                border-radius: 5px;
+                transition: 0.2s;
+
+                &:hover {
+                    transform: rotate(15deg);
+                }
             }
         }
     }

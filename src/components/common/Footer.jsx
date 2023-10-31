@@ -3,18 +3,20 @@ import styled from "styled-components";
 const Footer = () => {
     return (
         <FooterContainer>
-            <div className="footer-inner">
-                <div className="top-box">
-                    <h2>FOOTER</h2>
+            <div className="footer-line">
+                <div className="footer-inner">
+                    <div className="top-box">
+                        <h2>FOOTER</h2>
 
-                    <ul className="sns">
-                        <li className="sns__item">INSTAGRAM</li>
-                        <li className="sns__item">KAKAOTALK</li>
-                        <li className="sns__item">BLOG</li>
-                    </ul>
+                        <ul className="sns">
+                            <li className="sns__item">INSTAGRAM</li>
+                            <li className="sns__item">KAKAOTALK</li>
+                            <li className="sns__item">BLOG</li>
+                        </ul>
+                    </div>
+
+                    <p>footer 영역이에요.</p>
                 </div>
-
-                <p>footer 영역이에요.</p>
             </div>
         </FooterContainer>
     )
@@ -36,9 +38,11 @@ const FooterContainer = styled.footer `
         font-size: 40px;
         color: #FFF;
     }
+    .footer-line {
+        border: 4px dotted #fec7d3;
+    }
     .footer-inner {
         max-width: 1280px;
-        border: 4px dotted #fec7d3;
         width: 100%;
         padding: 40px 20px;
         margin: 0 auto;

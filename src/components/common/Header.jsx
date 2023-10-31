@@ -6,18 +6,30 @@ import linkBackgroundImg from "../../assets/img/icon/icon_heart.png"
 
 const Header = () => {
     const [scrolling, setScrolling] = useState(false);
-    const handleScroll = () => {
-        if (window.scrollY > 0) {
-            setScrolling(true);
+
+    // y축이 0일 때만 헤더 나타나게
+    // const handleScroll = () => {
+    //     if (window.scrollY > 0) {
+    //         setScrolling(true);
+    //     } else {
+    //         setScrolling(false);
+    //     }
+    // }
+    
+    const handleWheel = (event) => {
+        if (event.deltaY > 0) {
+          setScrolling(true); // 마우스 휠 아래로 스크롤할 때
         } else {
-            setScrolling(false);
+          setScrolling(false); // 마우스 휠 위로 스크롤할 때
         }
     }
 
     useEffect(()=> {
-        window.addEventListener('scroll', handleScroll);
+        // window.addEventListener('scroll', handleScroll);
+        window.addEventListener('wheel', handleWheel);
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            // window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('wheel', handleWheel);
         }
     }, []);
 
@@ -59,6 +71,7 @@ const HeaderContainer = styled.header`
     box-shadow: 1px 0px 8px 4px #fb607a;
     background-color: #f891a2;
     transition: all 0.3s;
+    z-index: 20;
 
     &.scrolling {
         top: -80px;
