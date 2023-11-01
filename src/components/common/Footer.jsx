@@ -1,6 +1,11 @@
+import { useState } from "react";
 import styled from "styled-components";
+import Modal from "./Modal";
 
 const Footer = () => {
+    
+    const [isModalActive, setIsModalActive] = useState(false);
+
     return (
         <FooterContainer>
             <div className="footer-line">
@@ -9,15 +14,24 @@ const Footer = () => {
                         <h2>FOOTER</h2>
 
                         <ul className="sns">
-                            <li className="sns__item">INSTAGRAM</li>
-                            <li className="sns__item">KAKAOTALK</li>
-                            <li className="sns__item">BLOG</li>
+                            <li className="sns__item" onClick={() => setIsModalActive(true)}>INSTAGRAM</li>
+                            <li className="sns__item" onClick={() => setIsModalActive(true)}>KAKAOTALK</li>
+                            <li className="sns__item" onClick={() => setIsModalActive(true)}>BLOG</li>
                         </ul>
                     </div>
 
                     <p>footer 영역입니다.</p>
                 </div>
             </div>
+            
+
+            {isModalActive && (<Modal
+                    modal={isModalActive}
+                    setModal={setIsModalActive}
+                    width={600}
+                    title={'알림'}
+                    element={'아직 관련 링크가 연결이 안 되어 있어요.'}
+            />)}
         </FooterContainer>
     )
 }
@@ -63,7 +77,7 @@ const FooterContainer = styled.footer `
                 border-bottom: 1px solid #fff1f4;
             }
 
-            &::after {
+            /* &::after {
                 content: "지금은 연결이 안 되어 있어요.";
                 position: absolute;
                 left: 50%;
@@ -80,7 +94,7 @@ const FooterContainer = styled.footer `
                 opacity: 0;
                 transition: 0.4s all;
             }
-            
+             */
             &:hover::after {
                 /* display: block; */
                 top: -70px;

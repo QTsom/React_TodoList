@@ -15,7 +15,7 @@ const HomePage = () => {
 
     const [content, setContent] = useState('FIRST');
 
-    const [toDos, setTodos] = useState([]);
+    const [toDos, setToDos] = useState([]);
     const [currentText, setCurrentText] = useState("");
     const [toDoId, setTodoId] = useState(0);
 
@@ -35,8 +35,8 @@ const HomePage = () => {
             return;
         }
     
-        setTodos((prevTodos) => [
-            ...prevTodos,
+        setToDos((prevToDos) => [
+            ...prevToDos,
             {
                 content: currentText,
                 id: toDoId,
@@ -51,13 +51,13 @@ const HomePage = () => {
         const result = toDos.filter((toDo) => {
             return toDo.id !== removeId
         })
-        setTodos(result);
+        setToDos(result);
     }
     const toggleDidIt = (toggleId) => {
         const result = toDos.map((toDo => {
             return toDo.id === toggleId ? {...toDo, didIt: !toDo.didIt} : toDo
         }))
-        setTodos(result);
+        setToDos(result);
     }
 
 

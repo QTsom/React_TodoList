@@ -60,9 +60,10 @@ const ModalContainer = styled.div`
         }
 
         &__paragraph {
-            padding: 30px 20px;
+            padding: 40px 20px;
             word-break: break-all;
             font-size: 24px;
+            color: #222;
             text-align: center;
         }
 
