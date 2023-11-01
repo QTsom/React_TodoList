@@ -5,6 +5,7 @@ import Layout from "components/common/Layout";
 import FirstContainer from "components/First";
 import SecondContainer from "components/Second";
 import ThirdContainer from "components/Third";
+import Modal from 'components/common/Modal';
 
 import exImg from '../assets/img/contents/ex_img.jpg';
 import exImg2 from '../assets/img/contents/ex_img2.jpg';
@@ -14,9 +15,11 @@ const HomePage = () => {
 
     const [content, setContent] = useState('FIRST');
 
-    const [todos, setTodos] = useState([]);
+    const [toDos, setTodos] = useState([]);
     const [currentText, setCurrentText] = useState("");
-    const [todoId, setTodoId] = useState(0);
+    const [toDoId, setTodoId] = useState(0);
+
+    const [isModalActive, setIsModalActive] = useState(false);
 
     const handleClickButton = e => {
         const {name} = e.target;
@@ -27,27 +30,32 @@ const HomePage = () => {
         setCurrentText(e.target.value)
     }
     const handleAdd = () => {
+        if (currentText.trim() === "") {
+            setIsModalActive(true);
+            return;
+        }
+    
         setTodos((prevTodos) => [
             ...prevTodos,
             {
                 content: currentText,
-                id: todoId,
+                id: toDoId,
                 didIt: false,
             },
         ]);
     
-        setTodoId(todoId + 1);
+        setTodoId(toDoId + 1);
         setCurrentText("");
     };
     const handleRemove = removeId => {
-        const result = todos.filter((todo) => {
-            return todo.id !== removeId
+        const result = toDos.filter((toDo) => {
+            return toDo.id !== removeId
         })
         setTodos(result);
     }
     const toggleDidIt = (toggleId) => {
-        const result = todos.map((todo => {
-            return todo.id === toggleId ? {...todo, didIt: !todo.didIt} : todo
+        const result = toDos.map((toDo => {
+            return toDo.id === toggleId ? {...toDo, didIt: !toDo.didIt} : toDo
         }))
         setTodos(result);
     }
@@ -162,10 +170,10 @@ const HomePage = () => {
                     </div>
 
                     <ul className='to-do-wrap__list'>
-                        {todos.map((todo) => (
-                            <li className='to-do-wrap__item' key={todo.id}>
-                                <span onClick={() => toggleDidIt(todo.id)} className={`doing ${todo.didIt ? "active" : ""}`}>{todo.content}</span>
-                                <button type='button' onClick={() => handleRemove(todo.id)} className='delete-button'>삭제</button>
+                        {toDos.map((toDo) => (
+                            <li className='to-do-wrap__item' key={toDo.id}>
+                                <span onClick={() => toggleDidIt(toDo.id)} className={`doing ${toDo.didIt ? "active" : ""}`}>{toDo.content}</span>
+                                <button type='button' onClick={() => handleRemove(toDo.id)} className='delete-button'>삭제</button>
                             </li>
                         ))}
                     </ul>
@@ -178,6 +186,15 @@ const HomePage = () => {
     - Update : 수정(변경)하기
 
     - Delete : 삭제하기 */}
+                {isModalActive && 
+                    (<Modal 
+                        modal={isModalActive}
+                        setModal={setIsModalActive}
+                        width={500}
+                        title={'알림'}
+                        element={'할 일을 적어주세요.'}
+                    />)
+                 }
 
             </HomeContainer>
         </Layout>
@@ -436,5 +453,6 @@ const HomeContainer = styled.div `
                 }
             }
         }
+    
     }
 `
