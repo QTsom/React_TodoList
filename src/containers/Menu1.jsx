@@ -15,7 +15,7 @@ const MenuPage1 = () => {
 
                     <div className="checkbox-wrap__content">
                         <div className="checkbox-wrap__all-check">
-                            <input type="checkbox" id="allCheck" />
+                           < input type="checkbox" id="allCheck" />
                             <label htmlFor="allCheck">전체동의</label>
                         </div>
 
@@ -35,7 +35,7 @@ const MenuPage1 = () => {
                         </ul>
 
                         <div className="button-wrap">
-                            <button className="complete-button">확인</button>
+                            <button className="complete-button" disabled>확인</button>
                         </div>
                     </div>
                 </div>
@@ -117,6 +117,10 @@ const MenuContainer = styled.div`
                 background-color: #f891a2;
                 border-radius: 5px;
                 color: #fff1f4;
+                
+                &:disabled {
+                    background-color: #a0a0a0;
+                }
             }
         }
     }
