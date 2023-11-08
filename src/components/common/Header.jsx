@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Aside from "./Aside"
 
 import linkBackgroundImg from "../../assets/img/icon/icon_heart.png"
 
@@ -24,10 +25,8 @@ const Header = () => {
     }
 
     useEffect(()=> {
-        // window.addEventListener('scroll', handleScroll);
         window.addEventListener('wheel', handleWheel);
         return () => {
-            // window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('wheel', handleWheel);
         }
     }, []);
@@ -53,10 +52,9 @@ const Header = () => {
                     </ul>
                 </nav>
 
-                <div className="button-wrapper">
-                    <button type="button" className="button-wrapper__menu-btn">MENU</button>
-                </div>
+                <Aside />
             </div>
+
         </HeaderContainer>
     )
 }
@@ -115,7 +113,6 @@ const HeaderContainer = styled.header`
             display: flex;
             align-items: center;
             justify-content: center;
-            /* gap: 20px; */
             height: 100%;
         }
         
@@ -125,8 +122,6 @@ const HeaderContainer = styled.header`
             height: 100%;
             transition: 0.5s all;
             background-position: center center;
-            
-            /* background: url(${linkBackgroundImg}) top 10px center / 20px no-repeat; */
             
             &:hover {
                 transform: rotateY(360deg);
@@ -143,22 +138,6 @@ const HeaderContainer = styled.header`
             &:hover {
                 font-weight: 600;
                 color: #770014;
-            }
-        }
-    }
-
-    .button-wrapper {
-        text-align: right;
-
-        &__menu-btn {
-            font-size: 28px;
-            color: #fff;
-            transition: 0.2s all;
-            
-            &:hover {
-                font-size: 34px;
-                transform: rotate(10deg);
-                text-shadow: 5px 5px 4px #fc3455;
             }
         }
     }

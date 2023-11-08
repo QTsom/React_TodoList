@@ -1,8 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 
-import PropTypes from "prop-types";
-
 const Modal = ({width, title, element, setModal}) => {
 
     const disableModal = () => {
@@ -27,7 +25,6 @@ const Modal = ({width, title, element, setModal}) => {
 
 const ModalContainer = styled.div`
      .modal {
-        /* display: none; */
         position: fixed;
         width: 100%;
         left: 0;
