@@ -5,6 +5,7 @@ const ExCard = () => {
         <ExCardContainer>
             <div className="car-wrap">
                 <div>
+                    {/* thumbnail 위치 */}
                     <img src="" alt="" />
                 </div>
 

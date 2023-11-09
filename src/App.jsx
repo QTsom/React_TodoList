@@ -19,7 +19,6 @@ export default function App() {
                 <Route path={"/Menu2"} element={<Menu2 />}></Route>
                 <Route path={"/Menu3"} element={<Menu3 />}></Route>
                 <Route path={"/SubPage/:id"} element={<SubPage />}></Route>
-                {/* <Route path={"/SubPage"} element={<SubPage />}></Route> */}
             </Routes>
           </BrowserRouter>
     </div>

@@ -77,26 +77,7 @@ const FooterContainer = styled.footer `
                 border-bottom: 1px solid #fff1f4;
             }
 
-            /* &::after {
-                content: "지금은 연결이 안 되어 있어요.";
-                position: absolute;
-                left: 50%;
-                top: -30px;
-                transform: translate(-50%);
-                width: 80px;
-                padding: 10px 15px;
-                font-size: 14px;
-                font-weight: 600;
-                color: #fc3455;
-                background-color: #fff1f4;
-                border-radius: 15px;
-                border: 1px solid #fc3455;
-                opacity: 0;
-                transition: 0.4s all;
-            }
-             */
             &:hover::after {
-                /* display: block; */
                 top: -70px;
                 opacity: 1;
             }
