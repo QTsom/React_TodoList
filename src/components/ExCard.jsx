@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
 const ExCard = () => {
+    const cardList = [
+        {
+            id: 1,
+            title: 'first slick',
+            description: 'first slick description',
+            // thumbnail:
+        }
+    ]
+
     return (
         <ExCardContainer>
             <div className="car-wrap">
