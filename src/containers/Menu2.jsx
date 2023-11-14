@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Slider from "react-slick"
 
 import Layout from "components/common/Layout";
-import ExCard from "components/ExCard";
 
 const MenuPage2 = () => {
 
@@ -19,9 +18,9 @@ const MenuPage2 = () => {
 
                     <Slider {...settings}>
                         {/* ExCard는 예시, 서버에서 배너(이미지)를 배열로 담아주면, map으로 뿌림 */}
-                        <ExCard>
+                        {/* <ExCard>
 
-                        </ExCard>
+                        </ExCard> */}
                     </Slider>
                 </div>
             </MenuContainer>
