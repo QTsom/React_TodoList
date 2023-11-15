@@ -14,27 +14,46 @@ import exImg3 from '../assets/img/contents/ex_img3.jpg';
 const HomePage = () => {
 
     const [content, setContent] = useState('FIRST');
+    // 현재 content 값을 나타냄 초기엔 "first"로 설정
 
     const [toDos, setToDos] = useState([]);
+    // 할 일 항목의 배열 나타냄
+
     const [currentText, setCurrentText] = useState("");
+    // 새로운 할 일 항목 추가 위해, 현재 텍스트 입력 값 나타냄
+
     const [toDoId, setTodoId] = useState(0);
+    // 할 일 항목의 id, 새 할 일 항목 추가될 떄마다 증가
 
     const [isModalActive, setIsModalActive] = useState(false);
+    // 모달의 활성 여부
 
+
+    // 버튼 클릭 처리
     const handleClickButton = e => {
         const {name} = e.target;
         setContent(name);
     }
+    // 버튼 클릭하면 함수가 트리거
+    // 클릭한 버튼에서 속성 추출, name에 content값으로 설정
 
+    // 텍스트 입력 변경 처리
     const handleChange = e => {
+        // 텍스트 입력이 변경되면 함수가 트리거
         setCurrentText(e.target.value)
+        // 텍스트 입력의 새 값으로 상태 업데이트
     }
+
     const handleAdd = () => {
+        // 추가 버튼 클릭 시 함수 트리거
         if (currentText.trim() === "") {
+            // currentText 비어 있는지 확인
             setIsModalActive(true);
+            // 비어 있다면 true로 설정
             return;
         }
     
+        // 비어 있지 않을 시
         setToDos((prevToDos) => [
             ...prevToDos,
             {
@@ -43,21 +62,30 @@ const HomePage = () => {
                 didIt: false,
             },
         ]);
-    
+        // 새 할 일 항목을 추가함
+        
         setTodoId(toDoId + 1);
         setCurrentText("");
+        // toDoId 증가, currentText 빈문자열로 재설정
     };
+
     const handleRemove = removeId => {
+        // 제거 버튼 클릭 시 기능 실행
         const result = toDos.filter((toDo) => {
+            // 지정된 항목을 제외하고 배열 필터링
             return toDo.id !== removeId
         })
         setToDos(result);
     }
     const toggleDidIt = (toggleId) => {
+        // did it 버튼 클릭 시 함수 실행
         const result = toDos.map((toDo => {
             return toDo.id === toggleId ? {...toDo, didIt: !toDo.didIt} : toDo
         }))
+        // 배열을 통해 매핑되어 지정된 항목의 속성을 전환
         setToDos(result);
+
+        // 새 배열로 상태 업데이트, 지정된 할 일 항목의 완료 상태를 전환
     }
 
 
