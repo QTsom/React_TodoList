@@ -88,7 +88,23 @@ const HomePage = () => {
         // 새 배열로 상태 업데이트, 지정된 할 일 항목의 완료 상태를 전환
     }
 
+    // 할 일 추가( handleAdd함수):
 
+    // "추가" 버튼을 클릭하면 `handle handleAdd함수가 호출됩니다.
+    // 먼저 ` currentText(새 할 일 항목에 대한 입력)이 비어 있는지 확인합니다.
+    // 비어 있으면 isModalActive으로 설정됩니다 true. 이는 모달적이거나 시각적인 요소가 있을 수 있음을 시사합니다.
+    // `current가 currentText비어 있지 않으면 다음을 사용하여 새 할 일 항목이 생성됩니다.
+    // content: 입력의 텍스트입니다.
+    // id: 현재 toDoId.
+    // didIt: 처음에는 false할 일 항목이 완료되지 않았음을 나타냅니다.
+    // 배열 ) toDos은 ...상태의 불변성을 유지합니다.
+    // toDoId다음 할 일 항목을 준비하기 위해 증가됩니다.
+    // currentText~이다
+    // 할 일 제거( handleRemove함수):
+    
+    // handleRemove함수가 호출될 때 removeId).
+    // 함수 toDos배열 removeId.
+    // 그런 다음 상태는 다음과 같이 업데이트됩니다.
 
     const selectComponent = {
         FIRST: <FirstContainer />,

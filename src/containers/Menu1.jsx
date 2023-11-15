@@ -5,31 +5,6 @@ import styled from "styled-components";
 import checkedIcon from "../assets/img/icon/icon_check.png"
 
 const MenuPage1 = () => {
-    // const data = [
-    //     {id: 0, title: '선택 1'},
-    //     {id: 1, title: '선택 2'},
-    //     {id: 2, title: '선택 3'},
-    // ]
-
-    // const [checkItems, setCheckItems] = useState();
-
-    // const handleSingleCheck = (checked, id) => {
-    //     if (checked) {
-    //         setCheckItems(prev => [...prev, id]);
-    //     } else {
-    //         setCheckItems([checkItems.filter((el) => el !== id)]);
-    //     }
-    // }
-    // const handleAllCheck = () => {
-    //     if(checked) {
-    //         const idArray = {};
-    //         data.forEach((el) => idArray.push(el.id));
-    //         setCheckItems(idArray);
-    //     }
-    //     else {
-    //         setCheckItems([]);
-    //     }
-    // }
 
     return (
         <Layout>    
