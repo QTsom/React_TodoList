@@ -1,16 +1,24 @@
-const CheckBox = () => {
+import styled from "styled-components";
+
+const CheckBox = (props) => {
+    const {contents, category, checked, onClick} = props;
+
     return (
-        <CheckBox className="checkbox-wrap__item">
+        <CheckBoxWrap className="checkbox-wrap__item">
             <input 
                 type="checkbox"
                 className="" 
-                checked=""
-                onClick=""
-                name=""
+                checked={checked}
+                onClick={onClick}
+                name={checked}
             />
-            <label htmlFor="check1"><span>{category}</span> {contents}</label>
-        </CheckBox>
+            <label ><span>{category}</span> {contents}</label>
+        </CheckBoxWrap>
     )
 }
 
 export default CheckBox;
+
+const CheckBoxWrap = styled.div`
+    
+`

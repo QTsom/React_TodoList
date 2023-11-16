@@ -21,7 +21,7 @@ const MenuPage1 = () => {
                             <label htmlFor="allCheck">전체동의</label>
                         </div>
 
-                        <ul className="checkbox-wrap__list">
+                        {/* <ul className="checkbox-wrap__list">
                             <li className="checkbox-wrap__item">
                                 <input type="checkbox" id="check1" />
                                 <label htmlFor="check1">(필수) 이용약관 동의</label>
@@ -34,7 +34,7 @@ const MenuPage1 = () => {
                                 <input type="checkbox" id="check3" />
                                 <label htmlFor="check3">(선택) 마케팅 수신 동의</label>
                             </li>
-                        </ul>
+                        </ul> */}
 
                         <div className="button-wrap">
                             <button className="complete-button" disabled>확인</button>
