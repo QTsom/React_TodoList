@@ -3,8 +3,26 @@ import Layout from "components/common/Layout";
 import styled from "styled-components";
 
 import checkedIcon from "../assets/img/icon/icon_check.png"
+import CheckBox from "components/CheckBox";
 
 const MenuPage1 = () => {
+    const [checkList, setCheckList] = useState([
+        {
+            id: 1,
+            contents: '개인 정보 동의',
+            category: '[필수]',
+        },
+        {
+            id: 2,
+            contents: '이용약관 동의',
+            category: '[필수]',
+        },
+        {
+            id: 3,
+            contents: '마케팅 동의',
+            category: '[선택]',
+        },
+    ])
 
     return (
         <Layout>    
@@ -17,24 +35,25 @@ const MenuPage1 = () => {
 
                     <div className="checkbox-wrap__content">
                         <div className="checkbox-wrap__all-check">
-                           < input type="checkbox" id="allCheck" />
+                            <input type="checkbox" name="all-check" id="allCheck" />
                             <label htmlFor="allCheck">전체동의</label>
                         </div>
-
-                        {/* <ul className="checkbox-wrap__list">
-                            <li className="checkbox-wrap__item">
-                                <input type="checkbox" id="check1" />
-                                <label htmlFor="check1">(필수) 이용약관 동의</label>
-                            </li>
-                            <li className="checkbox-wrap__item">
-                                <input type="checkbox" id="check2" />
-                                <label htmlFor="check2">(필수) 개인정보처리방침 동의</label>
-                            </li>
-                            <li className="checkbox-wrap__item">
-                                <input type="checkbox" id="check3" />
-                                <label htmlFor="check3">(선택) 마케팅 수신 동의</label>
-                            </li>
-                        </ul> */}
+                    
+                        <div>
+                            {checkList.map((checkItem, index)=> {
+                                return(
+                                    <CheckBox
+                                        key={index}
+                                        contents={checkItem.contents}
+                                        category={checkItem.category}
+                                        name={`check-${checkItem.id}`}
+                                        checkId={`check-${checkItem.id}`}
+                                        checked={checkItem.checked}
+                                        onChange={() => handleCheckBoxClick(index)}
+                                    />
+                                )
+                            })}
+                        </div>
 
                         <div className="button-wrap">
                             <button className="complete-button" disabled>확인</button>
