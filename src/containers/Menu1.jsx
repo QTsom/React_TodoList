@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "components/common/Layout";
 import styled from "styled-components";
 
@@ -6,6 +7,8 @@ import checkedIcon from "../assets/img/icon/icon_check.png"
 import CheckBox from "components/CheckBox";
 
 const MenuPage1 = () => {
+    const navigate = useNavigate();
+
     const checkList = [
         {
             id: 1,
@@ -85,7 +88,11 @@ const MenuPage1 = () => {
                         </div>
 
                         <div className="button-wrap">
-                            <button className="complete-button" disabled={!allRequiredChecked} >확인</button>
+                            <button 
+                                className="complete-button"
+                                disabled={!allRequiredChecked}
+                                onClick={() => {navigate('/')}}
+                            >확인</button>
                         </div>
                     </div>
                 </div>
