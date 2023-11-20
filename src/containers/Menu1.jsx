@@ -6,7 +6,7 @@ import checkedIcon from "../assets/img/icon/icon_check.png"
 import CheckBox from "components/CheckBox";
 
 const MenuPage1 = () => {
-    const [checkList, setCheckList] = useState([
+    const checkList = [
         {
             id: 1,
             contents: '개인 정보 동의',
@@ -22,7 +22,30 @@ const MenuPage1 = () => {
             contents: '마케팅 동의',
             category: '[선택]',
         },
-    ])
+    ];
+
+    const [checkItems, setCheckItems] = useState([]);
+
+    const handleSingleCheck = (checked, id) => {
+        if(checked) {
+            setCheckItems(prev => [...prev, id]);
+        } else {
+            setCheckItems(checkItems.filter((el) => el !== id));
+        }
+    }
+
+    const handleAllCheck = (checked) => {
+        if(checked) {
+            const idArray = [];
+            checkList.forEach((el) => idArray.push(el.id));
+            setCheckItems(idArray);
+        }
+        else {
+            setCheckItems([]);
+        }
+    }
+
+    const allRequiredChecked = checkList.filter(item => item.category === '[필수]').every(item => checkItems.includes(item.id));
 
     return (
         <Layout>    
@@ -35,7 +58,13 @@ const MenuPage1 = () => {
 
                     <div className="checkbox-wrap__content">
                         <div className="checkbox-wrap__all-check">
-                            <input type="checkbox" name="all-check" id="allCheck" />
+                            <input 
+                                type="checkbox"
+                                name="all-check"
+                                id="allCheck"
+                                onChange={(e) => handleAllCheck(e.target.checked)}
+                                checked={checkItems.length === checkList.length}
+                            />
                             <label htmlFor="allCheck">전체동의</label>
                         </div>
                     
@@ -48,15 +77,15 @@ const MenuPage1 = () => {
                                         category={checkItem.category}
                                         name={`check-${checkItem.id}`}
                                         checkId={`check-${checkItem.id}`}
-                                        checked={checkItem.checked}
-                                        onChange={() => handleCheckBoxClick(index)}
+                                        checked={checkItems.includes(checkItem.id)}
+                                        onChange={(e) => handleSingleCheck(e.target.checked, checkItem.id)}
                                     />
                                 )
                             })}
                         </div>
 
                         <div className="button-wrap">
-                            <button className="complete-button" disabled>확인</button>
+                            <button className="complete-button" disabled={!allRequiredChecked} >확인</button>
                         </div>
                     </div>
                 </div>
